@@ -63,6 +63,7 @@ jobs:
             | grep -Ev ',Zee 24 Taas$' \
             | sed \
                 -e '/,Zee Chitramandir/ s/group-title="[^"]*"/group-title="Movies"/' \
+                -e '/,Zee Zest HD/ s/group-title="[^"]*"/group-title="Lifestyle"/' \
                 -e '/,Zee Marathi/ s/group-title="[^"]*"/group-title="Entertainment"/' \
             > build/zee5.tmp
           fi
