@@ -47,14 +47,10 @@ jobs:
             if (tolower(block) ~ /zee/) print block
           }
           ' sources/zeenew.m3u \
-          | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu)"' \
+          | grep -Ev 'group-title="(Business News|Lifestyle)"' \
           | grep -Ev ',Zee 24 Taas$' \
           | sed \
-              -e 's/group-title="[^"]*".*,Zee Chitramandir/group-title="Movies",Zee Chitramandir/' \
-              -e 's/group-title="[^"]*".*,Zee Talkies/group-title="Movies",Zee Talkies/' \
-              -e 's/group-title="[^"]*".*,Zee Marathi/group-title="Entertainment",Zee Marathi/' \
               -e 's/group-title="[^"]*".*,Zee Anmol$/group-title="Entertainment",Zee Anmol/' \
-              -e 's/group-title="[^"]*".*,Zee Yuva/group-title="Entertainment",Zee Yuva/' \
           > build/zee_new.tmp
 
       # --------------------------------------------------
