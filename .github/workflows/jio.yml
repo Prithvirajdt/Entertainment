@@ -33,42 +33,43 @@ jobs:
           wget -q -O sources/jai_raw.m3u "$SRC_JTV"
 
       # --------------------------------------------
-      # STEP 4: FILTER CHANNELS (SIMPLE)
+      # STEP 4: FILTER + MERGE BUSINESS INTO NEWS
       # --------------------------------------------
       - name: Clean playlist
         run: |
           awk '
           BEGIN { IGNORECASE=1; keep=0 }
 
-          # ---------------- BLOCK LIST (ALL CHANNELS) ----------------
+          # -------- BLOCK LIST (ALL CHANNELS) --------
           function is_blocked(line) {
             return (line ~ /tamil|telugu|kannada|bangla|malayalam|english|test|wow|swayam|sathee|ap-|yadagiri|vidya|gujarat|bengali|asianet|maa|ptc|vijay|etv|aath|rongeen|raj|punjab|manorama|mahaa|jaya|gemini|udaya|salaam|surya|adithya|amrita|colors super$|arunprabha|girnar|kashir|oriya|saptagiri|urdu|podhigai|desi|kairali|jalsha|studio|apex|flower|jonack|kalaignar|makkal|may|mk|moon|nakshatra|bangalore|peppers|polimer|puthu|sanjha|sidharth|spondon|kiran|sun tv|sundrani|suvarna|thanthi|vaanavil|vasanth|vendhar|vissa|jomjomat|j movies|ktv|maha|mahua|pitaara|public m|sun life|tabbar|thalaa|e 24$|chintu|chutti|kochu|kushi|naap|east|sun music|sun news|nick junior|sonic marathi$|rang|sristi|teh|4 tv|6 tv|10 tv|99 tv|ananda|asmita|ganga|abc|abn|chanakya|harya|mp|ghanta|kalak|jhar|nepal|taiwan|karn|kera|bihar|mh|pradesh|him|goman|kau|logy|uk|svbc/)
           }
 
-          # ---------------- NEWS + BUSINESS ALLOW LIST ----------------
+          # -------- NEWS ALLOW LIST --------
           function is_allowed_news(line) {
-            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|republic|wion|bharat|dd news|sansad|lok sabha|rajya sabha|news nation|firstpost|times now|mirror now|business/)
+            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|republic|wion|bharat|dd news|sansad|lok sabha|rajya sabha|news nation|firstpost|times now|mirror now/)
           }
 
           /^#EXTINF/ {
 
-            # NEWS or BUSINESS NEWS CATEGORY
-            is_news = ($0 ~ /group-title="News"|group-title="Business News"/)
+            is_news = ($0 ~ /group-title="News"/ || $0 ~ /group-title="Business News"/)
 
             if (is_news) {
               if (!is_blocked($0) && is_allowed_news($0)) {
-                keep=1; print
+                keep=1
+                gsub(/group-title="Business News"/, "group-title=\"News\"", $0)
+                print
               } else {
                 keep=0
               }
               next
             }
 
-            # NON-NEWS
             if (is_blocked($0)) {
               keep=0
             } else {
-              keep=1; print
+              keep=1
+              print
             }
             next
           }
