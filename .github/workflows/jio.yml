@@ -24,40 +24,57 @@ jobs:
           mkdir -p sources
 
       # --------------------------------------------
-      # STEP 3: DOWNLOAD JIO SOURCE (TEMP)
+      # STEP 3: DOWNLOAD JIO SOURCE
       # --------------------------------------------
       - name: Download Jio playlist
         env:
           SRC_JTV: ${{ secrets.SRC_JTV }}
         run: |
+          set -e
+          if [ -z "$SRC_JTV" ]; then
+            echo "❌ SRC_JTV secret missing"
+            exit 1
+          fi
           wget -q -O sources/jai_raw.m3u "$SRC_JTV"
 
       # --------------------------------------------
-      # STEP 4: REMOVE UNWANTED CHANNELS (STRICT)
+      # STEP 4: FILTER CHANNELS
       # --------------------------------------------
-      - name: Clean unwanted channels (jai.vxn only)
+      - name: Clean playlist (NEWS allow-list logic)
         run: |
+          set -e
           awk '
-            BEGIN { IGNORECASE=1; keep=0 }
+          BEGIN { IGNORECASE=1; keep=0 }
 
-            # Block channels containing these words
-            function is_blocked(line) {
-              return (line ~ /tamil|telugu|kannada|bangla|malayalam|english|test|wow|swayam|sathee|ap-|vidya|gujarat|bengali|asianet|maa|ptc|vijay|etv|aath|rongeen|raj|punjab|manorama|mahaa|jaya|gemini|udaya|salaam|surya|adithya|amrita|colors super$|arunprabha|girnar|kashir|oriya|saptagiri|urdu|podhigai|desi|kairali|jalsha|studio|apex|flower|jonack|kalaignar|makkal|may|mk|moon|nakshatra|bangalore|peppers|polimer|puthu|sanjha|sidharth|spondon|kiran|sun tv|sundrani|suvarna|thanthi|vaanavil|vasanth|vendhar|vissa|jomjomat|j movies|ktv|maha|mahua|pitaara|public m|sun life|tabbar|thalaa|e 24$|chintu|chutti|kochu|kushi|naap|east|sun music|sun news|nick junior|sonic marathi$|rang|sristi|teh|4 tv|6 tv|10 tv|99 tv|ananda|asmita|ganga|abc|abn|chanakya|harya|mp|ghanta|kalak|jhar|nepal|taiwan|karn|kera|bihar|mh|pradesh|him|goman|kau|logy|uk|svbc/)
-            }
+          # Block list for NON-NEWS
+          function is_blocked(line) {
+            return (line ~ /tamil|telugu|kannada|bangla|malayalam|english|test|wow|swayam|sathee|ap-|vidya|gujarat|bengali|asianet|maa|ptc|vijay|etv|aath|rongeen|raj|punjab|manorama|mahaa|jaya|gemini|udaya|salaam|surya|adithya|amrita|colors super$|arunprabha|girnar|kashir|oriya|saptagiri|urdu|podhigai|desi|kairali|jalsha|studio|apex|flower|jonack|kalaignar|makkal|may|mk|moon|nakshatra|bangalore|peppers|polimer|puthu|sanjha|sidharth|spondon|kiran|sun tv|sundrani|suvarna|thanthi|vaanavil|vasanth|vendhar|vissa|jomjomat|j movies|ktv|maha|mahua|pitaara|public m|sun life|tabbar|thalaa|e 24$|chintu|chutti|kochu|kushi|naap|east|sun music|sun news|nick junior|sonic marathi$|rang|sristi|teh|4 tv|6 tv|10 tv|99 tv|ananda|asmita|ganga|abc|abn|chanakya|harya|mp|ghanta|kalak|jhar|nepal|taiwan|karn|kera|bihar|mh|pradesh|him|goman|kau|logy|uk|svbc/)
+          }
 
-            /^#EXTINF/ {
-              if (is_blocked($0)) {
-                keep=0
+          # Allowed NEWS keywords
+          function is_allowed_news(line) {
+            return (line ~ /zee|aaj tak|ndtv|india today|cnn|news18|abp|republic|wion|times now/)
+          }
+
+          /^#EXTINF/ {
+            if ($0 ~ /news/i) {
+              if (is_allowed_news($0)) {
+                keep=1; print
               } else {
-                keep=1
-                print
+                keep=0
               }
               next
             }
 
-            {
-              if (keep==1) print
+            if (is_blocked($0)) {
+              keep=0
+            } else {
+              keep=1; print
             }
+            next
+          }
+
+          { if (keep==1) print }
           ' sources/jai_raw.m3u > sources/jai.vxn
 
           rm -f sources/jai_raw.m3u
@@ -72,4 +89,3 @@ jobs:
           git add sources/jai.vxn
           git commit -m "Update Jio playlist (jai.vxn)" || echo "No changes"
           git push
-
