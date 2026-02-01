@@ -47,7 +47,7 @@ jobs:
 
           # -------- NEWS ALLOW LIST --------
           function is_allowed_news(line) {
-            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|republic|wion|bharat|dd news|sansad|lok sabha|rajya sabha|news nation|firstpost|times now|mirror now/)
+            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|top|euro|asia|republic|wion|bharat|dd|sansad|lok||nation|firstpost|now/)
           }
 
           /^#EXTINF/ {
