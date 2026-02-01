@@ -89,7 +89,7 @@ jobs:
               name = $0
               sub(/.*?,/, "", name)
 
-              if (tolower(name) ~ /(tamil|telugu|kannada|bangla|malayalam|english|raj|up|uttar|punjab|mp|madhya|haryana|kalak|ghanta|business|bihar|bioskope|cinemalu|picchar|thirai|tehzeeb|biskope|keral|salaam|sarthak||||)/) {
+              if (tolower(name) ~ /(tamil|telugu|kannada|bangla|malayalam|english|raj|up|uttar|punjab|mp|madhya|haryana|kalak|ghanta|business|bihar|bioskope|cinemalu|picchar|thirai|tehzeeb|biskope|keral|salaam|sarthak)/) {
                 skip = 1
               } else {
                 skip = 0
