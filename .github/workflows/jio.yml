@@ -42,7 +42,7 @@ jobs:
 
             # Block channels containing these words
             function is_blocked(line) {
-              return (line ~ /tamil|telugu|kannada|bangla|malayalam|english|test|wow|swayam|sathee|ap-|vidya|gujarat|bengali|asianet|maa|ptc|vijay|etv|aath|rongeen|raj|punjab|manorama|mahaa|jaya|gemini|udaya|salaam|surya|adithya|amrita|colors super$|arunprabha|girnar|kashir|oriya|saptagiri|urdu|podhigai|desi channel$|kairali|jalsha|studio|apex|flower|jonack|kalaignar|makkal|may|mk|moon|nakshatra|bangalore|peppers|polimer|puthu|sanjha|sidharth|spondon|kiran|sun tv|sundrani|suvarna|thanthi|vaanavil|vasanth|vendhar|vissa|jomjomat|j movies|ktv|maha|mahua|pitaara|public m|sun life|tabbar|thalaa|e 24$|chintu|chutti|kochu|kushi|naap|east|sun music|sun news|nick junior|sonic marathi$|rang$|sristi/)
+              return (line ~ /tamil|telugu|kannada|bangla|malayalam|english|test|wow|swayam|sathee|ap-|vidya|gujarat|bengali|asianet|maa|ptc|vijay|etv|aath|rongeen|raj|punjab|manorama|mahaa|jaya|gemini|udaya|salaam|surya|adithya|amrita|colors super$|arunprabha|girnar|kashir|oriya|saptagiri|urdu|podhigai|desi|kairali|jalsha|studio|apex|flower|jonack|kalaignar|makkal|may|mk|moon|nakshatra|bangalore|peppers|polimer|puthu|sanjha|sidharth|spondon|kiran|sun tv|sundrani|suvarna|thanthi|vaanavil|vasanth|vendhar|vissa|jomjomat|j movies|ktv|maha|mahua|pitaara|public m|sun life|tabbar|thalaa|e 24$|chintu|chutti|kochu|kushi|naap|east|sun music|sun news|nick junior|sonic marathi$|rang|sristi|jio|teh|4 tv|6 tv|10 tv|99 tv|ananda|asmita|ganga||abc|abn|chanakya|harya|mp|ghanta|kalak|jhar|nepal|taiwan|karn|kera|bihar|mh/)
             }
 
             /^#EXTINF/ {
