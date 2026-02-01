@@ -5,20 +5,6 @@
 #EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
 https://jiotvpllive.cdn.jio.com/bpk-tv/Tehzeeb_TV_BTS/output/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
 
-#EXTINF:-1 tvg-id="2742" tvg-language="Kannada" group-title="News" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Kannada_News.png",Zee Kannada News
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=399ffb5f6f7e56509c14d7bf9cda7591:0e7ada0054540ff1a8ae4eb75906e70d
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
-https://jiotvpllive.cdn.jio.com/bpk-tv/Zee_Kannada_News_BTS/output/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
-
-#EXTINF:-1 tvg-id="3031" tvg-language="Telugu" group-title="News" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Telugu_News.png",Zee Telugu News
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=675664dc78485a85be3f8aa595c9028e:6db1e517909830c49b875cf0427a181a
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
-https://jiotvpllive.cdn.jio.com/bpk-tv/Zee_Telugu_News_BTS/output/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
-
 #EXTINF:-1 tvg-id="442" tvg-language="Marathi" group-title="News" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_24_Taas.png",Zee 24 Taas
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=d5d5f822f9775c6d995ec509d771e233:fdcaa71321f9f968964354dae74529c3
@@ -128,34 +114,6 @@ https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeMarathi_MOB/WDVLive/index.mpd?__hdnea_
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
 #EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
 https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeAnmol_MOB/WDVLive/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
-
-#EXTINF:-1 tvg-id="1038" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Bangla.png",Zee Bangla
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=811e683089455a1fa9c7e0d5d2bdb5fd:2782858ad6e8d5a7964ddcd7c2cdb207
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
-https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeBangla_MOB/WDVLive/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
-
-#EXTINF:-1 tvg-id="1039" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Tamil.png",Zee Tamil
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=5036572721315d12aaf769bb142f43fe:86fefa8b4f86639d644f03f7bccdc882
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
-https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeTamil_MOB/WDVLive/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
-
-#EXTINF:-1 tvg-id="1043" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Telugu.png",Zee Telugu
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=fc160005672554dab9882d0092e0635d:efada6d2baa8b99416f6431e0b0dc19d
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
-https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeTelugu_MOB/WDVLive/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
-
-#EXTINF:-1 tvg-id="1045" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Kannada.png",Zee Kannada
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=81315ac468145b019e76354c5f5279cd:3d19a7a524ae116254df1ac49714c1ad
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09"}
-https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeKannada_MOB/WDVLive/index.mpd?__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09&xxx=%7Ccookie=__hdnea__=st=1769908111~exp=1769994511~acl=/*~hmac=6086255c66d9865f1cf19c2a23cbe19ae53807c463e0d5462f660e2af9bbed09
 
 #EXTINF:-1 tvg-id="1066" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sarthak_TV.png",Zee Sarthak
 #KODIPROP:inputstream.adaptive.license_type=clearkey
