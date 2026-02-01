@@ -61,7 +61,9 @@ jobs:
             sed '1d' sources/zee5.m3u \
             | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu|News)"' \
             | sed \
+            | grep -Ev ',Zee 24 Taas$' \
                 -e '/,Zee Chitramandir/ s/group-title="[^"]*"/group-title="Movies"/' \
+                -e '/,Zee Marathi/ s/group-title="[^"]*"/group-title="Movies"/' \
                 -e '/,Zee Anmol$/ s/group-title="[^"]*"/group-title="Entertainment"/' \
             > build/zee5.tmp
           fi
