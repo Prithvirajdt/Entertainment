@@ -43,12 +43,12 @@ jobs:
 
             # Allowed categories
             function is_allowed_category(line) {
-              return (line ~ /movie|movies|entertainment|sports|kids/)
+              return (line ~ /Movies|Entertainment/)
             }
 
             # Blocked keywords
             function is_blocked(line) {
-              return (line ~ /tamil|telugu|kannada|malayalam|bangla|bengali|test|promo|demo/)
+              return (line ~ /aath|demo/)
             }
 
             /^#EXTINF/ {
