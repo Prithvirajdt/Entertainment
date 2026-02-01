@@ -47,7 +47,7 @@ jobs:
             if (tolower(block) ~ /zee/) print block
           }
           ' sources/zeenew.m3u \
-          | grep -Ev 'group-title="(Business News|Lifestyle)"' \
+          | grep -Ev 'group-title="(Business News|News|Lifestyle)"' \
           | sed \
               -e 's/group-title="[^"]*".*,Zee Anmol Cinema 2/group-title="Movies",Zee Anmol Cinema 2/' \
           > build/zee_new.tmp
@@ -59,7 +59,7 @@ jobs:
         run: |
           if [ -f sources/zee5.m3u ]; then
             sed '1d' sources/zee5.m3u \
-            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu)"' \
+            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu|News)"' \
             | grep -Ev ',Zee 24 Taas$' \
             | sed \
                 -e 's/group-title="[^"]*".*,Zee Chitramandir/group-title="Movies",Zee Chitramandir/' \
