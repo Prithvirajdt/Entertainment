@@ -53,7 +53,7 @@ jobs:
 
           # Allowed NEWS keywords
           function is_allowed_news(line) {
-            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|republic|wion|asia|bharat|dd|euro|india|global|news nation|firstpost|now/)
+            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|republic|wion|asia|bharat|dd|euro|india|global|news nation|firstpost|now|saam|sansad|lok|top/)
           }
 
           /^#EXTINF/ {
