@@ -1,0 +1,80 @@
+name: Update Sony Playlist
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------
+      # STEP 1: CHECKOUT REPOSITORY
+      # --------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --------------------------------------------
+      # STEP 2: ENSURE SOURCES FOLDER
+      # --------------------------------------------
+      - name: Prepare sources folder
+        run: |
+          mkdir -p sources
+
+      # --------------------------------------------
+      # STEP 3: DOWNLOAD SONY SOURCE
+      # --------------------------------------------
+      - name: Download Sony playlist
+        env:
+          SRC_SONY: ${{ secrets.SRC_SONY }}
+        run: |
+          wget -q -O sources/sony_raw.m3u "$SRC_SONY"
+
+      # --------------------------------------------
+      # STEP 4: KEEP ONLY SELECTED CATEGORIES
+      #         + BLOCK SPECIFIC KEYWORDS
+      # --------------------------------------------
+      - name: Filter by category and block keywords
+        run: |
+          awk '
+            BEGIN { IGNORECASE=1; keep=0 }
+
+            # Allowed categories
+            function is_allowed_category(line) {
+              return (line ~ /movie|movies|entertainment|sports|kids/)
+            }
+
+            # Blocked keywords
+            function is_blocked(line) {
+              return (line ~ /tamil|telugu|kannada|malayalam|bangla|bengali|test|promo|demo/)
+            }
+
+            /^#EXTINF/ {
+              if (is_allowed_category($0) && !is_blocked($0)) {
+                keep=1
+                print
+              } else {
+                keep=0
+              }
+              next
+            }
+
+            {
+              if (keep==1) print
+            }
+          ' sources/sony_raw.m3u > sources/sorry.vxn
+
+          rm -f sources/sony_raw.m3u
+
+      # --------------------------------------------
+      # STEP 5: COMMIT & PUSH
+      # --------------------------------------------
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add sources/sorry.vxn
+          git commit -m "Update Sony playlist (sorry.vxn)" || echo "No changes"
+          git push
