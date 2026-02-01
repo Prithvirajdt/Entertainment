@@ -43,7 +43,7 @@ jobs:
 
             # Allowed categories
             function is_allowed_category(line) {
-              return (line ~ /Movies|Entertainment/)
+              return (line ~ /Movies|Entertainment|Sports/)
             }
 
             # Blocked keywords
