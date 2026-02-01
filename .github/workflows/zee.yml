@@ -23,7 +23,6 @@ jobs:
         run: |
           mkdir -p sources
           mkdir -p build
-          mkdir -p playlist
 
       # --------------------------------------------------
       # STEP 3: DOWNLOAD SOURCES
@@ -37,7 +36,7 @@ jobs:
           wget -q -O sources/zeenew.m3u "$SRC_ZEENEW" || echo "ZEE NEW failed"
 
       # --------------------------------------------------
-      # STEP 4: ZEE NEW (FIRST PRIORITY)
+      # STEP 4: ZEE NEW (FILTER + NORMALIZE)
       # --------------------------------------------------
       - name: Process ZEE NEW
         run: |
@@ -47,10 +46,19 @@ jobs:
             block="#EXTINF"$0
             if (tolower(block) ~ /zee/) print block
           }
-          ' sources/zeenew.m3u > build/zee_new.tmp
+          ' sources/zeenew.m3u \
+          | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu)"' \
+          | grep -Ev ',Zee 24 Taas$' \
+          | sed \
+              -e 's/group-title="[^"]*".*,Zee Chitramandir/group-title="Movies",Zee Chitramandir/' \
+              -e 's/group-title="[^"]*".*,Zee Talkies/group-title="Movies",Zee Talkies/' \
+              -e 's/group-title="[^"]*".*,Zee Marathi/group-title="Entertainment",Zee Marathi/' \
+              -e 's/group-title="[^"]*".*,Zee Anmol$/group-title="Entertainment",Zee Anmol/' \
+              -e 's/group-title="[^"]*".*,Zee Yuva/group-title="Entertainment",Zee Yuva/' \
+          > build/zee_new.tmp
 
       # --------------------------------------------------
-      # STEP 5: ZEE5 FILTER + NORMALIZE
+      # STEP 5: ZEE5 (FILTER + NORMALIZE)
       # --------------------------------------------------
       - name: Process ZEE5
         run: |
@@ -99,7 +107,7 @@ jobs:
           ' build/VortexVision.tmp > sources/zero.vxn
 
       # --------------------------------------------------
-      # STEP 8: COMMIT & PUSH
+      # STEP 8: COMMIT
       # --------------------------------------------------
       - name: Commit playlist
         run: |
@@ -114,4 +122,3 @@ jobs:
             git commit -m "Update ZEE zero.vxn playlist"
             git push
           fi
-
