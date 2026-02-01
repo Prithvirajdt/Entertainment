@@ -48,7 +48,7 @@ jobs:
 
             # Blocked keywords
             function is_blocked(line) {
-              return (line ~ /aath|demo/)
+              return (line ~ /aath|pix|max 2/)
             }
 
             /^#EXTINF/ {
