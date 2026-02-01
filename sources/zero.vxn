@@ -210,7 +210,7 @@ https://z5ak-cmaflive.zee5.com/cmaf/live/2105536/ZeeTVELE/master.m3u8?hdntl=exp=
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 @joker_verse/537.36
 https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/And-Xplor-HD/index-connected/index-connected.m3u8?hdntl=exp=1770019055~acl=%2f*~id=dfcf6774-ee4c-49c5-b61e-ed9436fc557e~data=hdntl~hmac=3da5f9e67e104f5754c9892891552b5d2ad24232f1248a210dedcda12b37fd82
 
-#EXTINF:-1 tvg-id="0-9-348" group-title="Entertainment" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_374,h_374,c_fill,f_webp,q_auto:eco/resources/0-9-348/square/374x3742d2fb183187a4526ba33c39b399f7da5",Zee Zest HD
+#EXTINF:-1 tvg-id="0-9-348" group-title="Lifestyle" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_374,h_374,c_fill,f_webp,q_auto:eco/resources/0-9-348/square/374x3742d2fb183187a4526ba33c39b399f7da5",Zee Zest HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 @joker_verse/537.36
 https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zee-Zest-HD/index-connected/index-connected.m3u8?hdntl=exp=1770019055~acl=%2f*~id=dfcf6774-ee4c-49c5-b61e-ed9436fc557e~data=hdntl~hmac=3da5f9e67e104f5754c9892891552b5d2ad24232f1248a210dedcda12b37fd82
 
