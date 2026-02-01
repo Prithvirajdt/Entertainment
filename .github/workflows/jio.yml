@@ -53,7 +53,7 @@ jobs:
           /^#EXTINF/ {
 
             # NEWS or BUSINESS NEWS CATEGORY
-            is_news = ($0 ~ /group-title="News"|group-title="Business"/)
+            is_news = ($0 ~ /group-title="News"|group-title="Business News"/)
 
             if (is_news) {
               if (!is_blocked($0) && is_allowed_news($0)) {
