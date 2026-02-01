@@ -1,1 +1,117 @@
+name: Update ZEE Playlist
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------------
+      # STEP 1: CHECKOUT
+      # --------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --------------------------------------------------
+      # STEP 2: CREATE FOLDERS
+      # --------------------------------------------------
+      - name: Create folders
+        run: |
+          mkdir -p sources
+          mkdir -p build
+          mkdir -p playlist
+
+      # --------------------------------------------------
+      # STEP 3: DOWNLOAD SOURCES
+      # --------------------------------------------------
+      - name: Download ZEE sources
+        env:
+          SRC_ZEE5:   ${{ secrets.SRC_ZEE5 }}
+          SRC_ZEENEW: ${{ secrets.SRC_ZEENEW }}
+        run: |
+          wget -q -O sources/zee5.m3u   "$SRC_ZEE5"   || echo "ZEE5 failed"
+          wget -q -O sources/zeenew.m3u "$SRC_ZEENEW" || echo "ZEE NEW failed"
+
+      # --------------------------------------------------
+      # STEP 4: ZEE NEW (FIRST PRIORITY)
+      # --------------------------------------------------
+      - name: Process ZEE NEW
+        run: |
+          awk '
+          BEGIN { RS="#EXTINF"; ORS="" }
+          NR>1 {
+            block="#EXTINF"$0
+            if (tolower(block) ~ /zee/) print block
+          }
+          ' sources/zeenew.m3u > build/zee_new.tmp
+
+      # --------------------------------------------------
+      # STEP 5: ZEE5 FILTER + NORMALIZE
+      # --------------------------------------------------
+      - name: Process ZEE5
+        run: |
+          if [ -f sources/zee5.m3u ]; then
+            sed '1d' sources/zee5.m3u \
+            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu)"' \
+            | grep -Ev ',Zee 24 Taas$' \
+            | sed \
+                -e 's/group-title="[^"]*".*,Zee Chitramandir/group-title="Movies",Zee Chitramandir/' \
+                -e 's/group-title="[^"]*".*,Zee Talkies/group-title="Movies",Zee Talkies/' \
+                -e 's/group-title="[^"]*".*,Zee Marathi/group-title="Entertainment",Zee Marathi/' \
+                -e 's/group-title="[^"]*".*,Zee Anmol$/group-title="Entertainment",Zee Anmol/' \
+                -e 's/group-title="[^"]*".*,Zee Yuva/group-title="Entertainment",Zee Yuva/' \
+            > build/zee5.tmp
+          fi
+
+      # --------------------------------------------------
+      # STEP 6: COMBINE (ZEE NEW → ZEE5)
+      # --------------------------------------------------
+      - name: Combine playlists
+        run: |
+          echo "#EXTM3U" > build/VortexVision.tmp
+          cat build/zee_new.tmp >> build/VortexVision.tmp
+          cat build/zee5.tmp    >> build/VortexVision.tmp
+
+      # --------------------------------------------------
+      # STEP 7: DEDUPLICATION (BY CHANNEL NAME, FIRST WINS)
+      # --------------------------------------------------
+      - name: Deduplicate
+        run: |
+          awk '
+            /^#EXTINF/ {
+              name = $0
+              sub(/.*?,/, "", name)
+
+              if (!(name in seen)) {
+                seen[name] = 1
+                keep = 1
+                print
+              } else {
+                keep = 0
+              }
+              next
+            }
+            keep { print }
+          ' build/VortexVision.tmp > sources/zero.vxn
+
+      # --------------------------------------------------
+      # STEP 8: COMMIT & PUSH
+      # --------------------------------------------------
+      - name: Commit playlist
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add sources/zero.vxn
+
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update ZEE zero.vxn playlist"
+            git push
+          fi
 
