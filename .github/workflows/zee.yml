@@ -50,7 +50,7 @@ jobs:
           | grep -Ev 'group-title="(Business News|Lifestyle)"' \
           | grep -Ev ',Zee 24 Taas$' \
           | sed \
-              -e 's/group-title="[^"]*".*,Zee Anmol$/group-title="Movies",Zee Anmol Cinema 2 \
+              -e 's/group-title="[^"]*".*,Zee Anmol Cinema 2/group-title="Movies",Zee Anmol Cinema 2 \
           > build/zee_new.tmp
 
       # --------------------------------------------------
