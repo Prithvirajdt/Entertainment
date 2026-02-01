@@ -144,7 +144,6 @@ https://z5ak-cmaflive.zee5.com/cmaf/live/2105509/ZEEBUSINESSELE/master.m3u8?hdnt
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 @joker_verse/537.36
 https://z5ak-cmaflive.zee5.com/cmaf/live/2105497/ZEE24KALAKELE/master.m3u8?hdntl=exp=1770019055~acl=%2f*~id=dfcf6774-ee4c-49c5-b61e-ed9436fc557e~data=hdntl~hmac=3da5f9e67e104f5754c9892891552b5d2ad24232f1248a210dedcda12b37fd82
 
-#EXTINF:-1 tvg-id="0-9-zee24taas" group-title="Marathi" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_374,h_374,c_fill,f_webp,q_auto:eco/resources/0-9-zee24taas/square/zee24taasf54d1db937fb41fa854efc363e0cf9db",Zee 24 Taas
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 @joker_verse/537.36
 https://z5ak-cmaflive.zee5.com/cmaf/live/2105498/ZEE24TAASNEWSNEWELE/master.m3u8?hdntl=exp=1770019055~acl=%2f*~id=dfcf6774-ee4c-49c5-b61e-ed9436fc557e~data=hdntl~hmac=3da5f9e67e104f5754c9892891552b5d2ad24232f1248a210dedcda12b37fd82
 
@@ -177,7 +176,7 @@ https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Big-Magic-SD/master/master.
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 @joker_verse/537.36
 https://z5live-cf.zee5.com/out/v1/ZEE5_Live_Channels/Zing-SD/master/master.m3u8?hdntl=exp=1770019055~acl=%2f*~id=dfcf6774-ee4c-49c5-b61e-ed9436fc557e~data=hdntl~hmac=3da5f9e67e104f5754c9892891552b5d2ad24232f1248a210dedcda12b37fd82
 
-#EXTINF:-1 tvg-id="0-9-zeemarathi" group-title="Marathi" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_374,h_374,c_fill,f_webp,q_auto:eco/resources/0-9-zeemarathi/square/374x374fce3668d3259486490c03ad019415f69",Zee Marathi HD
+#EXTINF:-1 tvg-id="0-9-zeemarathi" group-title="Entertainment" tvg-logo="https://akamaividz2.zee5.com/image/upload/w_374,h_374,c_fill,f_webp,q_auto:eco/resources/0-9-zeemarathi/square/374x374fce3668d3259486490c03ad019415f69",Zee Marathi HD
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 @joker_verse/537.36
 https://z5ak-cmaflive.zee5.com/cmaf/live/2105520/ZeeMarathiHDELE/index-connected.m3u8?hdntl=exp=1770019055~acl=%2f*~id=dfcf6774-ee4c-49c5-b61e-ed9436fc557e~data=hdntl~hmac=3da5f9e67e104f5754c9892891552b5d2ad24232f1248a210dedcda12b37fd82
 
