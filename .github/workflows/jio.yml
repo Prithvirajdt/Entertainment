@@ -11,54 +11,52 @@ jobs:
 
     steps:
       # --------------------------------------------
-      # STEP 1: CHECKOUT REPOSITORY
+      # STEP 1: CHECKOUT
       # --------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
       # --------------------------------------------
-      # STEP 2: ENSURE SOURCES FOLDER
+      # STEP 2: PREPARE FOLDER
       # --------------------------------------------
       - name: Prepare sources folder
-        run: |
-          mkdir -p sources
+        run: mkdir -p sources
 
       # --------------------------------------------
-      # STEP 3: DOWNLOAD JIO SOURCE
+      # STEP 3: DOWNLOAD SOURCE
       # --------------------------------------------
       - name: Download Jio playlist
         env:
           SRC_JTV: ${{ secrets.SRC_JTV }}
         run: |
           set -e
-          if [ -z "$SRC_JTV" ]; then
-            echo "❌ SRC_JTV secret missing"
-            exit 1
-          fi
           wget -q -O sources/jai_raw.m3u "$SRC_JTV"
 
       # --------------------------------------------
-      # STEP 4: FILTER CHANNELS
+      # STEP 4: FILTER CHANNELS (SIMPLE)
       # --------------------------------------------
-      - name: Clean playlist (NEWS allow-list logic)
+      - name: Clean playlist
         run: |
-          set -e
           awk '
           BEGIN { IGNORECASE=1; keep=0 }
 
-          # Block list for NON-NEWS
+          # ---------------- BLOCK LIST (ALL CHANNELS) ----------------
           function is_blocked(line) {
             return (line ~ /tamil|telugu|kannada|bangla|malayalam|english|test|wow|swayam|sathee|ap-|yadagiri|vidya|gujarat|bengali|asianet|maa|ptc|vijay|etv|aath|rongeen|raj|punjab|manorama|mahaa|jaya|gemini|udaya|salaam|surya|adithya|amrita|colors super$|arunprabha|girnar|kashir|oriya|saptagiri|urdu|podhigai|desi|kairali|jalsha|studio|apex|flower|jonack|kalaignar|makkal|may|mk|moon|nakshatra|bangalore|peppers|polimer|puthu|sanjha|sidharth|spondon|kiran|sun tv|sundrani|suvarna|thanthi|vaanavil|vasanth|vendhar|vissa|jomjomat|j movies|ktv|maha|mahua|pitaara|public m|sun life|tabbar|thalaa|e 24$|chintu|chutti|kochu|kushi|naap|east|sun music|sun news|nick junior|sonic marathi$|rang|sristi|teh|4 tv|6 tv|10 tv|99 tv|ananda|asmita|ganga|abc|abn|chanakya|harya|mp|ghanta|kalak|jhar|nepal|taiwan|karn|kera|bihar|mh|pradesh|him|goman|kau|logy|uk|svbc/)
           }
 
-          # Allowed NEWS keywords
+          # ---------------- NEWS + BUSINESS ALLOW LIST ----------------
           function is_allowed_news(line) {
-            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|republic|wion|asia|bharat|dd|euro|india|global|news nation|firstpost|now|saam|sansad|lok|top/)
+            return (line ~ /zee|aaj tak|ndtv|india today|cnn|cnbc|news18|abp|republic|wion|bharat|dd news|sansad|lok sabha|rajya sabha|news nation|firstpost|times now|mirror now|business/)
           }
 
           /^#EXTINF/ {
-            if ($0 ~ /news/i) {
-              if (is_allowed_news($0)) {
+
+            # NEWS or BUSINESS NEWS CATEGORY
+            is_news = ($0 ~ /group-title="News"|group-title="Business"/)
+
+            if (is_news) {
+              if (!is_blocked($0) && is_allowed_news($0)) {
                 keep=1; print
               } else {
                 keep=0
@@ -66,6 +64,7 @@ jobs:
               next
             }
 
+            # NON-NEWS
             if (is_blocked($0)) {
               keep=0
             } else {
@@ -80,9 +79,9 @@ jobs:
           rm -f sources/jai_raw.m3u
 
       # --------------------------------------------
-      # STEP 5: COMMIT & PUSH
+      # STEP 5: COMMIT
       # --------------------------------------------
-      - name: Commit and push changes
+      - name: Commit and push
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
