@@ -75,12 +75,35 @@ jobs:
       # --------------------------------------------------
       - name: Combine playlists
         run: |
-          echo "#EXTM3U" > build/VortexVision.tmp
-          cat build/zee_new.tmp >> build/VortexVision.tmp
-          cat build/zee5.tmp    >> build/VortexVision.tmp
+          echo "#EXTM3U" > build/combined.tmp
+          cat build/zee_new.tmp >> build/combined.tmp
+          cat build/zee5.tmp    >> build/combined.tmp
 
       # --------------------------------------------------
-      # STEP 7: DEDUPLICATION (BY CHANNEL NAME, FIRST WINS)
+      # STEP 7: REMOVE CHANNELS BY NAME (CASE-INSENSITIVE)
+      # --------------------------------------------------
+      - name: Remove unwanted channels
+        run: |
+          awk '
+            /^#EXTINF/ {
+              name = $0
+              sub(/.*?,/, "", name)
+
+              if (tolower(name) ~ /(tamil|telugu|kannada|bangla|malayalam|english)/) {
+                skip = 1
+              } else {
+                skip = 0
+                print
+              }
+              next
+            }
+            !skip { print }
+          ' build/combined.tmp > build/combined.filtered
+
+          mv build/combined.filtered build/combined.tmp
+
+      # --------------------------------------------------
+      # STEP 8: DEDUPLICATION (BY CHANNEL NAME, FIRST WINS)
       # --------------------------------------------------
       - name: Deduplicate
         run: |
@@ -99,10 +122,10 @@ jobs:
               next
             }
             keep { print }
-          ' build/VortexVision.tmp > sources/zero.vxn
+          ' build/combined.tmp > sources/zero.vxn
 
       # --------------------------------------------------
-      # STEP 8: COMMIT
+      # STEP 9: COMMIT
       # --------------------------------------------------
       - name: Commit playlist
         run: |
