@@ -26,6 +26,20 @@ https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeMarathi_MOB/WDVLive/index.mpd?__hdnea_
 #EXTHTTP:{"cookie":"__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0"}
 https://jiotvpllive.cdn.jio.com/bpk-tv/ZeeAnmol_MOB/WDVLive/index.mpd?__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0&xxx=%7Ccookie=__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0
 
+#EXTINF:-1 tvg-id="1066" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sarthak_TV.png",Zee Sarthak
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=77c5af0e782c574e8c545320f4450c54:4da4712923c51138fd1ff9ae2d11e575
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
+#EXTHTTP:{"cookie":"__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0"}
+https://jiotvpllive.cdn.jio.com/bpk-tv/Sarthak_TV_MOB/WDVLive/index.mpd?__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0&xxx=%7Ccookie=__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0
+
+#EXTINF:-1 tvg-id="1135" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Zee_Punjabi.png",Zee Punjabi
+#KODIPROP:inputstream.adaptive.license_type=clearkey
+#KODIPROP:inputstream.adaptive.license_key=3e84a5e3bec95259be62298af311a881:82fe7d44316ca55e034f78b4c7596f60
+#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
+#EXTHTTP:{"cookie":"__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0"}
+https://jiotvpllive.cdn.jio.com/bpk-tv/ZeePunjabi_MOB/WDVLive/index.mpd?__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0&xxx=%7Ccookie=__hdnea__=st=1769944312~exp=1770030712~acl=/*~hmac=6163ec24f801faff2b4d62f7f3adb2efc626fcef5df1ce2bc7137946cd4276d0
+
 #EXTINF:-1 tvg-id="1160" group-title="Movies",Zee Anmol Cinema 2
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=521f555c43e25d75a2a532a35358cee6:8822f0168bbf58fb70f4171c92ad61bb
