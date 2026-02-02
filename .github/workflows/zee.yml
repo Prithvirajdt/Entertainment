@@ -36,7 +36,7 @@ jobs:
           wget -q -O sources/zeenew.m3u "$SRC_ZEENEW" || echo "ZEE NEW failed"
 
       # --------------------------------------------------
-      # STEP 4: ZEE NEW (FILTER + NORMALIZE)
+      # STEP 4: ZEE NEW (FILTER + NORMALIZE + REMOVE BY NAME)
       # --------------------------------------------------
       - name: Process ZEE NEW
         run: |
@@ -48,6 +48,21 @@ jobs:
           }
           ' sources/zeenew.m3u \
           | grep -Ev 'group-title="(Business News|News|Lifestyle)"' \
+          | awk '
+              /^#EXTINF/ {
+                name = $0
+                sub(/.*?,/, "", name)
+
+                if (tolower(name) ~ /(class|chitra)/) {
+                  skip = 1
+                } else {
+                  skip = 0
+                  print
+                }
+                next
+              }
+              !skip { print }
+            ' \
           | sed \
               -e '/,Zee Anmol Cinema 2/ s/group-title="[^"]*"/group-title="Movies"/' \
           > build/zee_new.tmp
@@ -87,7 +102,7 @@ jobs:
               name = $0
               sub(/.*?,/, "", name)
 
-              if (tolower(name) ~ /(tamil|telugu|kannada|bangla|malayalam|english|bioskope|cinemalu|picchar|thirai|tehzeeb|biskope|keral|salaam)/) {
+              if (tolower(name) ~ /(tamil|telugu|kannada|bangla|malayalam|english|bioskope|cinemalu|picchar|thirai|tehzeeb|biskope|keral|punjab|sarthak|salaam)/) {
                 skip = 1
               } else {
                 skip = 0
