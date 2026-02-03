@@ -1,4 +1,4 @@
-name: Update JAIBACK Playlist
+name: Update jioback Playlist
 
 on:
   workflow_dispatch:
