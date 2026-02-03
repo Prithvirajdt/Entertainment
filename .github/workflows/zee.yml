@@ -1,4 +1,4 @@
-name: Update ZEE Playlist
+name: Update zee Playlist
 
 on:
   workflow_dispatch:
