@@ -1,0 +1,74 @@
+name: Update JAIBACK Playlist
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------------
+      # STEP 1: CHECKOUT
+      # --------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --------------------------------------------------
+      # STEP 2: CREATE REQUIRED FOLDERS
+      # --------------------------------------------------
+      - name: Create folders
+        run: |
+          mkdir -p sources build
+
+      # --------------------------------------------------
+      # STEP 3: DOWNLOAD SOURCE
+      # --------------------------------------------------
+      - name: Download JTVBACK source
+        env:
+          SRC_JTVBACK: ${{ secrets.SRC_JTVBACK }}
+        run: |
+          wget -q -O sources/jtvback.m3u "$SRC_JTVBACK"
+
+      # --------------------------------------------------
+      # STEP 4: BUILD JAIBACK.VXN (REGEX NAME FILTER)
+      # --------------------------------------------------
+      - name: Build jaiback.vxn
+        run: |
+          # Always start fresh
+          echo "#EXTM3U" > build/jaiback.vxn
+          echo >> build/jaiback.vxn
+
+          awk '
+            BEGIN {
+              IGNORECASE = 1
+              keep = 0
+
+              # --------------------------------------------
+              # EDIT ONLY THIS LINE 👇
+              # --------------------------------------------
+              name_regex = "(demo|demo)"
+              # --------------------------------------------
+            }
+
+            # Match channel name (text after comma)
+            /^#EXTINF/ {
+              keep = ($0 ~ "," name_regex "$")
+            }
+
+            # Print EXTINF + props + URL when matched
+            keep { print }
+          ' sources/jtvback.m3u >> build/jaiback.vxn
+
+      # --------------------------------------------------
+      # STEP 5: COMMIT & PUSH
+      # --------------------------------------------------
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add build/jaiback.vxn
+          git commit -m "Update jaiback.vxn" || exit 0
+          git push
