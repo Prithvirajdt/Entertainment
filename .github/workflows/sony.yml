@@ -52,7 +52,7 @@ jobs:
 
               # Blocked keywords
               function is_blocked(line) {
-                return (line ~ /aath|pix|max 2/)
+                return (line ~ /aath|pix|sab|max 2/)
               }
 
               /^#EXTINF/ {
