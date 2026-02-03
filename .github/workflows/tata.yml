@@ -1,4 +1,4 @@
-name: Update TALI Playlist (Kids Only)
+name: Update Tata Playlist
 
 on:
   workflow_dispatch:
