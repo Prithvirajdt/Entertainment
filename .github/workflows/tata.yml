@@ -1,0 +1,76 @@
+name: Update TALI Playlist (Kids Only)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------------
+      # STEP 1: CHECKOUT
+      # --------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # --------------------------------------------------
+      # STEP 2: ENSURE SOURCES FOLDER
+      # --------------------------------------------------
+      - name: Create sources folder
+        run: |
+          mkdir -p sources
+
+      # --------------------------------------------------
+      # STEP 3: DOWNLOAD TATA TV SOURCE
+      # --------------------------------------------------
+      - name: Download TATA TV playlist
+        env:
+          SRC_TATA_TV: ${{ secrets.SRC_TATA_TV }}
+        run: |
+          wget -q -O sources/tata_tv.m3u "$SRC_TATA_TV"
+
+      # --------------------------------------------------
+      # STEP 4: BUILD TALI.VXN (KIDS ONLY)
+      # --------------------------------------------------
+      - name: Build tali.vxn
+        run: |
+          # Fresh file with header + blank line
+          echo "#EXTM3U" > sources/tali.vxn
+          echo >> sources/tali.vxn
+
+          # --------------------------------------------
+          # TATA TV: KEEP KIDS CHANNELS ONLY
+          # --------------------------------------------
+          if [ -f sources/tata_tv.m3u ]; then
+            awk '
+              BEGIN {
+                IGNORECASE = 1
+                keep = 0
+              }
+
+              /^#EXTINF/ {
+                keep = ($0 ~ /group-title="KIDS - 24X7"/)
+
+                if (keep) {
+                  gsub(/group-title="KIDS - 24X7"/,
+                       "group-title=\"Kids 24\/7\"")
+                }
+              }
+
+              keep { print }
+            ' sources/tata_tv.m3u >> sources/tali.vxn
+          fi
+
+      # --------------------------------------------------
+      # STEP 5: COMMIT & PUSH
+      # --------------------------------------------------
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add sources/tali.vxn
+          git commit -m "Update tali.vxn (kids only)" || exit 0
+          git push
