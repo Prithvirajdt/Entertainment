@@ -21,7 +21,7 @@ jobs:
       # --------------------------------------------------
       - name: Create folders
         run: |
-          mkdir -p sources build
+          mkdir -p sources
 
       # --------------------------------------------------
       # STEP 3: DOWNLOAD SOURCE
@@ -30,7 +30,7 @@ jobs:
         env:
           SRC_JTVBACK: ${{ secrets.SRC_JTVBACK }}
         run: |
-          wget -q -O sources/jtvback.m3u "$SRC_JTVBACK"
+          wget -q -O sources/jtvback_source.m3u "$SRC_JTVBACK"
 
       # --------------------------------------------------
       # STEP 4: BUILD JAIBACK.VXN (REGEX NAME FILTER)
@@ -38,8 +38,8 @@ jobs:
       - name: Build jaiback.vxn
         run: |
           # Always start fresh
-          echo "#EXTM3U" > build/jaiback.vxn
-          echo >> build/jaiback.vxn
+          echo "#EXTM3U" > sources/jaiback.vxn
+          echo >> sources/jaiback.vxn
 
           awk '
             BEGIN {
@@ -60,7 +60,7 @@ jobs:
 
             # Print EXTINF + props + URL when matched
             keep { print }
-          ' sources/jtvback.m3u >> build/jaiback.vxn
+          ' sources/jtvback_source.m3u >> sources/jaiback.vxn
 
       # --------------------------------------------------
       # STEP 5: COMMIT & PUSH
@@ -69,6 +69,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add build/jaiback.vxn
+          git add sources/jaiback.vxn
           git commit -m "Update jaiback.vxn" || exit 0
           git push
