@@ -117,25 +117,30 @@ jobs:
 
       # --------------------------------------------------
       # STEP 8: DEDUPLICATION (BY CHANNEL NAME, FIRST WINS)
+      #         + ENSURE HEADER + BLANK LINE
       # --------------------------------------------------
       - name: Deduplicate
         run: |
-          awk '
-            /^#EXTINF/ {
-              name = $0
-              sub(/.*?,/, "", name)
+          {
+            echo "#EXTM3U"
+            echo
+            awk '
+              /^#EXTINF/ {
+                name = $0
+                sub(/.*?,/, "", name)
 
-              if (!(name in seen)) {
-                seen[name] = 1
-                keep = 1
-                print
-              } else {
-                keep = 0
+                if (!(name in seen)) {
+                  seen[name] = 1
+                  keep = 1
+                  print
+                } else {
+                  keep = 0
+                }
+                next
               }
-              next
-            }
-            keep { print }
-          ' build/combined.tmp > sources/zero.vxn
+              keep { print }
+            ' build/combined.tmp
+          } > sources/zero.vxn
 
       # --------------------------------------------------
       # STEP 9: COMMIT
