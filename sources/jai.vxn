@@ -1823,13 +1823,6 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/Ishwar_TV_BTS/output/index.mpd?__hdnea__=
 #EXTHTTP:{"cookie":"__hdnea__=st=1770168330~exp=1770254730~acl=/*~hmac=ba005805c4431550ff85ec2306d4f3b3f1601d72644b694008bea1396e97835b"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Paras_tv_BTS/output/index.mpd?__hdnea__=st=1770168330~exp=1770254730~acl=/*~hmac=ba005805c4431550ff85ec2306d4f3b3f1601d72644b694008bea1396e97835b&xxx=%7Ccookie=__hdnea__=st=1770168330~exp=1770254730~acl=/*~hmac=ba005805c4431550ff85ec2306d4f3b3f1601d72644b694008bea1396e97835b
 
-#EXTINF:-1 tvg-id="608" group-title="Devotional" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Shubhsandesh_TV.png",Shubhsandesh TV
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=e2639720cd145615ae7ea5123a8a02f4:9209e3fcb339b865be32521fbca03107
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1770168330~exp=1770254730~acl=/*~hmac=ba005805c4431550ff85ec2306d4f3b3f1601d72644b694008bea1396e97835b"}
-https://jiotvmblive.cdn.jio.com/bpk-tv/Shubhsandesh_TV_BTS/output/index.mpd?__hdnea__=st=1770168330~exp=1770254730~acl=/*~hmac=ba005805c4431550ff85ec2306d4f3b3f1601d72644b694008bea1396e97835b&xxx=%7Ccookie=__hdnea__=st=1770168330~exp=1770254730~acl=/*~hmac=ba005805c4431550ff85ec2306d4f3b3f1601d72644b694008bea1396e97835b
-
 #EXTINF:-1 tvg-id="611" group-title="Devotional" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Darshan_24.png",Darshan 24
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=113e4caf45ec5e7585ab066f2c9c0fbe:5e6e026de0d371e65ba3314628d9f515
