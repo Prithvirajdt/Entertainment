@@ -30,7 +30,7 @@ jobs:
       - name: Download ZEE sources
         env:
           SRC_ZEE5:   ${{ secrets.SRC_ZEE5 }}
-          SRC_ZEENEW: ${{ secrets.SRC_ZEENEW }}
+          SRC_ZEENEW: ${{ secrets.SRC_ZEENE }}
         run: |
           wget -q -O sources/zee5.m3u   "$SRC_ZEE5"   || echo "ZEE5 failed"
           wget -q -O sources/zeenew.m3u "$SRC_ZEENEW" || echo "ZEE NEW failed"
@@ -44,7 +44,7 @@ jobs:
           BEGIN { RS="#EXTINF"; ORS="" }
           NR>1 {
             block="#EXTINF"$0
-            if (tolower(block) ~ /zee/) print block
+            if (tolower(block) ~ /zee/and/) print block
           }
           ' sources/zeenew.m3u \
           | grep -Ev 'group-title="(Business News|News)"' \
@@ -74,7 +74,7 @@ jobs:
         run: |
           if [ -f sources/zee5.m3u ]; then
             sed '1d' sources/zee5.m3u \
-            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu||News)"' \
+            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu|News)"' \
             | grep -Ev ',Zee 24 Taas$' \
             | sed \
                 -e '/,Zee Chitramandir/ s/group-title="[^"]*"/group-title="Movies"/' \
