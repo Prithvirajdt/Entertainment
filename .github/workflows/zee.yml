@@ -29,8 +29,8 @@ jobs:
       # --------------------------------------------------
       - name: Download ZEE sources
         env:
-          SRC_ZEE5:   ${{ secrets.SRC_ZEE5 }}
-          SRC_ZEENEW: ${{ secrets.SRC_ZEENE }}
+          SRC_ZEE5:   ${{ secrets.SRC_ZE }}
+          SRC_ZEENEW: ${{ secrets.SRC_ZEENEW }}
         run: |
           wget -q -O sources/zee5.m3u   "$SRC_ZEE5"   || echo "ZEE5 failed"
           wget -q -O sources/zeenew.m3u "$SRC_ZEENEW" || echo "ZEE NEW failed"
