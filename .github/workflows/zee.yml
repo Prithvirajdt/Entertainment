@@ -47,13 +47,13 @@ jobs:
             if (tolower(block) ~ /zee/) print block
           }
           ' sources/zeenew.m3u \
-          | grep -Ev 'group-title="(Business News|News|Lifestyle)"' \
+          | grep -Ev 'group-title="(Business News|News)"' \
           | awk '
               /^#EXTINF/ {
                 name = $0
                 sub(/.*?,/, "", name)
 
-                if (tolower(name) ~ /(class|chitra|bolly|cafe)/) {
+                if (tolower(name) ~ /(cafe sd|zest sd)/) {
                   skip = 1
                 } else {
                   skip = 0
@@ -74,7 +74,7 @@ jobs:
         run: |
           if [ -f sources/zee5.m3u ]; then
             sed '1d' sources/zee5.m3u \
-            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu|News)"' \
+            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu||News)"' \
             | grep -Ev ',Zee 24 Taas$' \
             | sed \
                 -e '/,Zee Chitramandir/ s/group-title="[^"]*"/group-title="Movies"/' \
