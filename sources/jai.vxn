@@ -1042,13 +1042,6 @@ https://jiotvmblive.cdn.jio.com/bpk-tv/KCM_BTS/output/index.mpd?__hdnea__=st=177
 #EXTHTTP:{"cookie":"__hdnea__=st=1771204785~exp=1771291185~acl=/*~hmac=fd06e372e51e3c596996568b075df814258db101e618bfa4bfc1ec709903c596"}
 https://jiotvmblive.cdn.jio.com/bpk-tv/Sanskar_BTS/output/index.mpd?__hdnea__=st=1771204785~exp=1771291185~acl=/*~hmac=fd06e372e51e3c596996568b075df814258db101e618bfa4bfc1ec709903c596&xxx=%7Ccookie=__hdnea__=st=1771204785~exp=1771291185~acl=/*~hmac=fd06e372e51e3c596996568b075df814258db101e618bfa4bfc1ec709903c596
 
-#EXTINF:-1 tvg-id="291" group-title="Entertainment" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sony_HD.png",SET HD
-#KODIPROP:inputstream.adaptive.license_type=clearkey
-#KODIPROP:inputstream.adaptive.license_key=ebd37e936867596a868cc085070e4cd5:f5c58e6bf0a2deb018fe87a934a6a1d0
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1771204785~exp=1771291185~acl=/*~hmac=fd06e372e51e3c596996568b075df814258db101e618bfa4bfc1ec709903c596"}
-https://jiotvmblive.cdn.jio.com/bpk-tv/Sony_HD_BTS/output/index.mpd?__hdnea__=st=1771204785~exp=1771291185~acl=/*~hmac=fd06e372e51e3c596996568b075df814258db101e618bfa4bfc1ec709903c596&xxx=%7Ccookie=__hdnea__=st=1771204785~exp=1771291185~acl=/*~hmac=fd06e372e51e3c596996568b075df814258db101e618bfa4bfc1ec709903c596
-
 #EXTINF:-1 tvg-id="2917" group-title="Devotional" tvg-logo="https://jiotv.catchup.cdn.jio.com/dare_images/images/Sadhna_Gold.png",Sadhna Gold
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=e5356be18d1c5ad0a3284bcf7aa3e405:e23f433fe146e08d6ad6d62cd03084ff
