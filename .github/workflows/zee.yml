@@ -44,7 +44,7 @@ jobs:
           BEGIN { RS="#EXTINF"; ORS="" }
           NR>1 {
             block="#EXTINF"$0
-            if (tolower(block) ~ /zee/ || tolower(block) ~ /,and/) print block
+            if (tolower(block) ~ /zee/) print block
           }
           ' sources/zeenew.m3u \
           | grep -Ev 'group-title="(Business News|News)"' \
@@ -53,7 +53,7 @@ jobs:
                 name = $0
                 sub(/.*?,/, "", name)
 
-                if (tolower(name) ~ /(cafe sd|zest sd)/) {
+                if (tolower(name) ~ /(cafe|zest sd|chitra|class|bolly)/) {
                   skip = 1
                 } else {
                   skip = 0
@@ -74,7 +74,7 @@ jobs:
         run: |
           if [ -f sources/zee5.m3u ]; then
             sed '1d' sources/zee5.m3u \
-            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu|Movies|Entertainment|Marathi|News)"' \
+            | grep -Ev 'group-title="(Bengali|Gujarati|Kannada|Malayalam|Odia|Punjabi|Spiritual|Tamil|Telugu|News)"' \
             | grep -Ev ',Zee 24 Taas$' \
             | sed \
                 -e '/,Zee Chitramandir/ s/group-title="[^"]*"/group-title="Movies"/' \
