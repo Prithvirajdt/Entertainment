@@ -5,5 +5,5 @@
 #KODIPROP:inputstream.adaptive.license_type=clearkey
 #KODIPROP:inputstream.adaptive.license_key=https://aqfadtv.xyz/clearkey/results.php?keyid=ea48cf7b24dd54dd98c369626b9ad105&key=ee5778d627dfae2c2affc02d76e8db6c
 #EXTVLCOPT:http-user-agent=billatvoriginals
-#EXTHTTP:{ "cookie":"__hdnea__=st=1772856033~exp=1772942433~acl=/*~hmac=91aacb9c20c749e006d02ca543abc6c4e89c61f07533293f14416d757242075d" }
-http://jiotvbpkmob.cdn.jio.com/bpk-tv/CNHindi_BTS/output/index.mpd
+#EXTHTTP:{ "cookie":"__hdnea__=st=1772877633~exp=1772964033~acl=/*~hmac=8944fefabb2c710035bfd7cfc448d10df9e59a870e6b9286197c4a72bdee4833" }
+https://jiotvmblive.cdn.jio.com/bpk-tv/CNHindi_BTS/output/index.mpd
