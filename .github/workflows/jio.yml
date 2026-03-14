@@ -62,6 +62,7 @@ jobs:
                 if (!is_blocked($0) && is_allowed_news($0)) {
                   keep=1
                   gsub(/group-title="Business News"/, "group-title=\"News\"", $0)
+                  gsub(/group-title="Education"/, "group-title=\"Educational\"", $0)
                   print
                 } else {
                   keep=0
@@ -73,6 +74,7 @@ jobs:
                 keep=0
               } else {
                 keep=1
+                gsub(/group-title="Education"/, "group-title=\"Educational\"", $0)
                 print
               }
               next
