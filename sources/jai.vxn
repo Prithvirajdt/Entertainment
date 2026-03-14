@@ -2453,21 +2453,6 @@ https://jiotvpllive.cdn.jio.com/CyberPeace_TV/CyberPeace_TV.m3u8?__hdnea__=st=17
 #EXTHTTP:{"cookie":"__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65"}
 https://jiotvpllive.cdn.jio.com/Jyothishavartha/Jyothishavartha.m3u8?__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65&xxx=%7Ccookie=__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65
 
-#EXTINF:-1 tvg-id="2687" group-title="Educational" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/NTBD_Channel.png",The Book Channel
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65"}
-https://jiotvpllive.cdn.jio.com/NTBD_Channel/NTBD_Channel.m3u8?__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65&xxx=%7Ccookie=__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65
-
-#EXTINF:-1 tvg-id="2781" group-title="Educational" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/CENTA_TV.png",CENTA TV
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65"}
-https://jiotvpllive.cdn.jio.com/CENTA_TV/CENTA_TV.m3u8?__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65&xxx=%7Ccookie=__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65
-
-#EXTINF:-1 tvg-id="2860" group-title="Educational" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/ICAI.png",ICMAI-Delhi
-#EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
-#EXTHTTP:{"cookie":"__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65"}
-https://jiotvpllive.cdn.jio.com/ICAI/ICAI.m3u8?__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65&xxx=%7Ccookie=__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65
-
 #EXTINF:-1 tvg-id="3029" group-title="Entertainment" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/bollywoodmasala.png",Bollywood Masala
 #EXTVLCOPT:http-user-agent=plaYtv/7.1.3 (Linux;Android 13) ygx/824.1 ExoPlayerLib/824.0
 #EXTHTTP:{"cookie":"__hdnea__=st=1773493314~exp=1773579714~acl=/*~hmac=5a87c711c45d0f448b2d5825fa96e1559f77d4896e47942ae55f56b074b9ad65"}
