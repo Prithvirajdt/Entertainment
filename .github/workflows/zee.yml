@@ -53,7 +53,7 @@ jobs:
                 name = $0
                 sub(/.*?,/, "", name)
 
-                if (tolower(name) ~ /(cafe sd|xplore|anmol|zest sd)/) {
+                if (tolower(name) ~ /(cafe sd|xplore|anmol|ghanta|mp|zest sd)/) {
                   skip = 1
                 } else {
                   skip = 0
