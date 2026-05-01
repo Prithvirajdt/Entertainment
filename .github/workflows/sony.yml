@@ -47,12 +47,12 @@ jobs:
 
               # Allowed categories
               function is_allowed_category(line) {
-                return (line ~ /Movies|Entertainment|Sports/)
+                return (line ~ /demo|SONY IN|demo/)
               }
 
               # Blocked keywords
               function is_blocked(line) {
-                return (line ~ /aath|pix|sab|sony|set|max 2/)
+                return (line ~ /aath|pix|sab|ten|kal|marathi|set|pal|wah|max/)
               }
 
               /^#EXTINF/ {
