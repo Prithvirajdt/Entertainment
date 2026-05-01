@@ -3,28 +3,31 @@ name: Update Sony Playlist
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 */3 * * *'   # runs every 3 hours
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+
       # --------------------------------------------
-      # STEP 1: CHECKOUT REPOSITORY
+      # STEP 1: GET YOUR REPO CODE
       # --------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
 
+
       # --------------------------------------------
-      # STEP 2: ENSURE SOURCES FOLDER
+      # STEP 2: CREATE SOURCES FOLDER
       # --------------------------------------------
       - name: Prepare sources folder
         run: |
           mkdir -p sources
 
+
       # --------------------------------------------
-      # STEP 3: DOWNLOAD SONY SOURCE
+      # STEP 3: DOWNLOAD ORIGINAL PLAYLIST
       # --------------------------------------------
       - name: Download Sony playlist
         env:
@@ -32,53 +35,84 @@ jobs:
         run: |
           wget -q -O sources/sony_raw.m3u "$SRC_SONY"
 
+
       # --------------------------------------------
-      # STEP 4: KEEP ONLY SELECTED CATEGORIES
-      #         + BLOCK SPECIFIC KEYWORDS
-      #         + FIX BROKEN LINES
+      # STEP 4: FILTER + MODIFY PLAYLIST
       # --------------------------------------------
       - name: Filter by category and block keywords
         run: |
           {
+            # Add required M3U header
             echo "#EXTM3U"
             echo
 
-            # 🔥 Fix broken playlist formatting
+            # 🔥 FIX BAD FORMATTING
+            # Some playlists put everything in one line
+            # This forces each channel to start on new line
             sed 's/#EXTINF/\n#EXTINF/g' sources/sony_raw.m3u | \
 
             awk '
-              BEGIN { IGNORECASE=1; keep=0 }
+              BEGIN {
+                IGNORECASE=1   # ignore case (SONY, sony same)
+                keep=0
+              }
 
-              # Allowed categories
+              # ----------------------------------------
+              # ALLOWED CATEGORY
+              # Only allow SONY IN channels
+              # ----------------------------------------
               function is_allowed_category(line) {
-                return (line ~ /zupa|SONY IN|zupa/)
+                return (line ~ /SONY IN/)
               }
 
-              # Blocked keywords
+              # ----------------------------------------
+              # BLOCK UNWANTED CHANNELS
+              # ----------------------------------------
               function is_blocked(line) {
-                return (line ~ /aath|pix|sab|ten|kal|marathi|set|bbc|pal|wah|max/)
+                return (line ~ /aath|pix|sab|ten|kal|marathi|set|bbc|pal|wah|max|MOVIES/)
               }
 
+              # ----------------------------------------
+              # MAIN FILTER LOGIC
+              # ----------------------------------------
               /^#EXTINF/ {
+
+                # If allowed AND not blocked → keep
                 if (is_allowed_category($0) && !is_blocked($0)) {
                   keep=1
-                  print
+                  line=$0
+
+                  # ====================================
+                  # 🎯 SPECIAL RULE: SONY YAY TRANSFORM
+                  # ====================================
+                  # Any "Yay" channel becomes your custom format
+                  if (line ~ /Yay/) {
+
+                    line="#EXTINF:-1 tvg-logo=\"https://jiotv.catchup.cdn.jio.com/dare_images/images/SonyYAYHin.png\" group-title=\"Kids\",Sony Yay Hindi"
+                  }
+
+                  print line
                 } else {
                   keep=0
                 }
                 next
               }
 
+              # ----------------------------------------
+              # PRINT STREAM URL (next line)
+              # ----------------------------------------
               {
                 if (keep==1) print
               }
             '
           } > sources/sorry.vxn
 
+          # remove raw file
           rm -f sources/sony_raw.m3u
 
+
       # --------------------------------------------
-      # STEP 5: COMMIT & PUSH
+      # STEP 5: SAVE RESULT TO GITHUB
       # --------------------------------------------
       - name: Commit and push changes
         run: |
