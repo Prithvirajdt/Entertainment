@@ -35,13 +35,17 @@ jobs:
       # --------------------------------------------
       # STEP 4: KEEP ONLY SELECTED CATEGORIES
       #         + BLOCK SPECIFIC KEYWORDS
-      #         + ENSURE HEADER + BLANK LINE
+      #         + FIX BROKEN LINES
       # --------------------------------------------
       - name: Filter by category and block keywords
         run: |
           {
             echo "#EXTM3U"
             echo
+
+            # 🔥 Fix broken playlist formatting
+            sed 's/#EXTINF/\n#EXTINF/g' sources/sony_raw.m3u | \
+
             awk '
               BEGIN { IGNORECASE=1; keep=0 }
 
@@ -68,7 +72,7 @@ jobs:
               {
                 if (keep==1) print
               }
-            ' sources/sony_raw.m3u
+            '
           } > sources/sorry.vxn
 
           rm -f sources/sony_raw.m3u
