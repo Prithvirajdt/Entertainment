@@ -52,7 +52,7 @@ jobs:
 
               # Blocked keywords
               function is_blocked(line) {
-                return (line ~ /aath|pix|sab|ten|kal|marathi|set|EngMov|bbc||pal|wah|max/)
+                return (line ~ /aath|pix|sab|ten|kal|marathi|set|EngMov|bbc|pal|wah|max/)
               }
 
               /^#EXTINF/ {
