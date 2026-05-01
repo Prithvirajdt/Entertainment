@@ -51,7 +51,7 @@ jobs:
 
               # Allowed categories
               function is_allowed_category(line) {
-                return (line ~ /demo|SONY IN|demo/)
+                return (line ~ /zupa|SONY IN|zupa/)
               }
 
               # Blocked keywords
