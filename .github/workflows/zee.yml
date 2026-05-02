@@ -90,7 +90,7 @@ jobs:
               print block
             }
           }
-          ' > sources/sony.vxn
+          ' > sources/sony2.vxn
 
       # --------------------------------------------------
       # STEP 5: ADD HEADER
@@ -107,7 +107,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add sources/sony.vxn
+          git add sources/sony2.vxn
 
           if git diff --cached --quiet; then
             echo "No changes"
