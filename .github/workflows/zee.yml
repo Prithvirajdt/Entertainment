@@ -25,9 +25,9 @@ jobs:
       # --------------------------------------------------
       - name: Download SONY2
         env:
-          SRC_SONY: ${{ secrets.SRC_SONY2 }}
+          SRC_SONY2: ${{ secrets.SRC_SONY2 }}
         run: |
-          wget -q -O sources/sony.m3u "$SRC_SONY2" || echo "Download failed"
+          wget -q -O sources/sony2.m3u "$SRC_SONY2" || echo "Download failed"
 
       # --------------------------------------------------
       # STEP 4: PROCESS PLAYLIST
