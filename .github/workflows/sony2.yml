@@ -30,7 +30,7 @@ jobs:
           wget -q -O sources/sony2.m3u "$SRC_SONY2" || echo "Download failed"
 
       # --------------------------------------------------
-      # STEP 4: PROCESS PLAYLIST
+      # STEP 4: PROCESS PLAYLIST (FIXED)
       # --------------------------------------------------
       - name: Process playlist
         run: |
@@ -43,9 +43,8 @@ jobs:
 
             # ==========================================
             # 🔥 EDIT THIS ONLY (BLOCK LIST)
-            # Add any channel keywords here
             # ==========================================
-            BLOCK_LIST = "aath|pix|sab|ten|kal|marathi|set|bbc|pal|wah|max"
+            BLOCK_LIST = "aath|pix|sab|ten|marathi|set|bbc|pal|wah|max"
           }
 
           # ------------------------------
@@ -53,7 +52,19 @@ jobs:
           # ------------------------------
           function is_blocked(name) {
             name = tolower(name)
-            return (name ~ "\\b(" BLOCK_LIST ")\\b")
+            return (name ~ "(" BLOCK_LIST ")")
+          }
+
+          # ------------------------------
+          # FUNCTION: SET GROUP TITLE
+          # ------------------------------
+          function set_group(block, group) {
+            if (block ~ /group-title="/) {
+              gsub(/group-title="[^"]*"/, "group-title=\"" group "\"", block)
+            } else {
+              sub(/#EXTINF:-1/, "#EXTINF:-1 group-title=\"" group "\"", block)
+            }
+            return block
           }
 
           # ------------------------------
@@ -62,31 +73,24 @@ jobs:
           NR > 1 {
             block = "#EXTINF" $0
 
-            # Extract channel name
             name = block
             sub(/.*?,/, "", name)
 
-            # ----------------------------------
-            # FILTER USING BLOCK LIST
-            # ----------------------------------
             if (!is_blocked(name)) {
 
-              # ----------------------------------
-              # GROUP TITLE FIX (EDITABLE)
-              # ----------------------------------
+              # --------------------------
+              # GROUP TITLE FIX
+              # --------------------------
               if (name ~ /Sony Max|Sony Pix/) {
-                gsub(/group-title="[^"]*"/, "group-title=\"Movies\"", block)
+                block = set_group(block, "Movies")
               }
               else if (name ~ /Sony SAB|Sony Pal|Sony Entertainment/) {
-                gsub(/group-title="[^"]*"/, "group-title=\"Entertainment\"", block)
+                block = set_group(block, "Entertainment")
               }
               else if (name ~ /Sony Yay/) {
-                gsub(/group-title="[^"]*"/, "group-title=\"Kids\"", block)
+                block = set_group(block, "Kids")
               }
 
-              # ----------------------------------
-              # PRINT FINAL BLOCK
-              # ----------------------------------
               print block
             }
           }
