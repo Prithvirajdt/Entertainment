@@ -1,4 +1,4 @@
-name: Update Sony Playlist
+name: Update Sony2 Playlist
 
 on:
   workflow_dispatch:
@@ -23,18 +23,18 @@ jobs:
       # --------------------------------------------------
       # STEP 3: DOWNLOAD SOURCE
       # --------------------------------------------------
-      - name: Download SONY
+      - name: Download SONY2
         env:
-          SRC_SONY: ${{ secrets.SRC_SONY }}
+          SRC_SONY: ${{ secrets.SRC_SONY2 }}
         run: |
-          wget -q -O sources/sony.m3u "$SRC_SONY" || echo "Download failed"
+          wget -q -O sources/sony.m3u "$SRC_SONY2" || echo "Download failed"
 
       # --------------------------------------------------
       # STEP 4: PROCESS PLAYLIST
       # --------------------------------------------------
       - name: Process playlist
         run: |
-          sed '1d' sources/sony.m3u \
+          sed '1d' sources/sony2.m3u \
           | awk '
 
           BEGIN {
@@ -97,7 +97,7 @@ jobs:
       # --------------------------------------------------
       - name: Add header
         run: |
-          sed -i '1i #EXTM3U\n' sources/sony.vxn
+          sed -i '1i #EXTM3U\n' sources/sony2.vxn
 
       # --------------------------------------------------
       # STEP 6: COMMIT
@@ -112,6 +112,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "Update SONY playlist"
+            git commit -m "Update SONY2 playlist"
             git push
           fi
