@@ -2,6 +2,8 @@ name: Update Sony2 Playlist
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */2 * * *'   # runs every 3 hours
 
 jobs:
   build:
